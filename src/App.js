@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import ItemListContainer from "../src/components/ItemListContainer/ItemListContainer";
+//lo necesario para el enrutamiento
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./views/Home";
+import Category from "./views/Category";
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <ItemListContainer />
+    <Router>
+      <div className="App container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:category" element={<Category />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

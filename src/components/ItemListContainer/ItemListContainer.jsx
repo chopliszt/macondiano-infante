@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../services/FirebaseConfig";
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, where } from "firebase/firestore";
+import ItemList from "../ItemList/ItemList";
 
-function ItemListContainer() {
+function ItemListContainer({ categoriaProp }) {
   const [hogares, setHogares] = useState([]);
+  console.log(categoriaProp, "catProp");
 
   useEffect(() => {
     getAptos();
@@ -11,7 +13,12 @@ function ItemListContainer() {
 
   const getAptos = async () => {
     console.log("Trayendo los datos");
-    const q = query(collection(db, "apartamentos"));
+    const q = categoriaProp
+      ? query(
+          collection(db, "apartamentos"),
+          where("categoria", "==", categoriaProp)
+        )
+      : query(collection(db, "apartamentos"));
     const misDocumentos = []; //creo esta variable para luego sumarle a los datos, el ID
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -23,16 +30,9 @@ function ItemListContainer() {
   };
 
   return (
-    <div className="App">
-      <div className="container">
-        <p>hola desde app.js</p>
-        {console.log("hola")}
-        {hogares &&
-          hogares.map((hogar, index) => {
-            return <h1 key={index}>{hogar.proyecto}</h1>;
-          })}
-      </div>
-    </div>
+    <>
+      <ItemList hogares={hogares} />
+    </>
   );
 }
 
