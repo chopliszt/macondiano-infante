@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Context/CartContext";
 
 const ItemDetail = ({ data }) => {
-  // return <div>El titulo es {data.proyecto}</div>;
+  const [hogar, setHogar] = useState();
+  const { saludar, agregarHogar } = useContext(CartContext);
   return (
     <>
+      {saludar()}
       <div class="row mt-3">
         <col-12>
           <h2>
