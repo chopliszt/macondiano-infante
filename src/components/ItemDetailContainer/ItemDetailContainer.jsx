@@ -43,7 +43,6 @@ const ItemDetailContainer = () => {
       {hogarData.map((hogar) => {
         return <ItemDetail data={hogar} key={hogar.id} />;
       })}
-      <p>parrafo</p>
     </div>
   );
 };
