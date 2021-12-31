@@ -1,26 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 
+//DATA es realmente el hogar que viene como prop
 const ItemDetail = ({ data }) => {
-  const [hogar, setHogar] = useState();
+  // const [hogar, setHogar] = useState();
   const { saludar, agregarHogar } = useContext(CartContext);
+
+  function onAdd(cantidadDeHogares) {
+    console.log("hola desde onAdd");
+    agregarHogar(data, cantidadDeHogares);
+  }
+
   return (
     <>
-      {saludar()}
-      <div class="row mt-3">
+      <div className="row mt-3">
         <col-12>
           <h2>
             {data ? data.proyecto : "Título de artículo"}
-            <span class="badge bg-primary">{data ? data.category : null}</span>
+            <span className="badge bg-primary">
+              {data ? data.category : null}
+            </span>
           </h2>
         </col-12>
       </div>
-      <div class="row mt-3">
-        <div class="col-xs-12 col-lg-6">
-          <img class="img-fluid" src={data ? data.img : null} alt="" />
+      <div className="row mt-3">
+        <div className="col-xs-12 col-lg-6">
+          <img className="img-fluid" src={data ? data.img : null} alt="" />
         </div>
-        <div class="col-xs-12 col-lg-6">
+        <div className="col-xs-12 col-lg-6">
           <h4>Descripción</h4>
           <p>{data ? data.descripcion : "Descripción"}</p>
           <p>
@@ -29,12 +38,17 @@ const ItemDetail = ({ data }) => {
           <p>
             <strong>
               Precio: US${data ? data.valor : "precio"}
-              <span class="badge bg-warning">Entrega Inmediata</span>
+              <span className="badge bg-warning">Entrega Inmediata</span>
             </strong>
           </p>
           <h4>Cantidad a comprar</h4>
           {/* <h4>Cantidad comprada temporal {cantidadCompras}</h4> */}
-          {/* <ItemCount inventario={5} inicial={0} /> */}
+          <ItemCount
+            inventario={5}
+            inicial={0}
+            saludar={saludar}
+            onAdd={onAdd}
+          />
           <Link to="/cart">
             <button
               className="btn btn-warning me-2"
@@ -45,10 +59,10 @@ const ItemDetail = ({ data }) => {
                 //   : alert("Está repetido!");
               }}
             >
-              Compraaar Ir al Carrito!
+              Compraaar Ir al Carrito! Esta logica aun debo usarla
             </button>
           </Link>
-          <button
+          {/* <button
             className="btn btn-success me-1"
             onClick={() => {
               // borrarCarrito();
@@ -56,8 +70,8 @@ const ItemDetail = ({ data }) => {
             }}
           >
             Borrar todo
-          </button>
-          <button
+          </button> */}
+          {/* <button
             className="btn btn-success me-1"
             onClick={() => {
               alert("eliminando item" + data.id);
@@ -65,11 +79,11 @@ const ItemDetail = ({ data }) => {
             }}
           >
             Borrar este producto
-          </button>
+          </button> */}
 
-          <Link to="/">
+          {/* <Link to="/">
             <button class="btn btn-info">Regresar</button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import { CartContext } from "../Context/CartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartList, setCartlist } = useContext(CartContext);
+  const { cartList } = useContext(CartContext);
   return (
     <div>
       <p>El carrito2</p>
@@ -28,15 +28,15 @@ const Cart = () => {
                     return (
                       <>
                         <tr
+                          key={apartamento.id}
                           className={
                             index % 2 === 0 ? "table-primary" : "table"
                           }
                         >
-                          <td>Mochila de viaje</td>
-                          <td>50</td>
-                          <td>1</td>
+                          <td>{apartamento.proyecto}</td>
+                          <td>{apartamento.valor}</td>
+                          <td>{apartamento.quantity}</td>
                           <td>
-                            🦜
                             <button
                               className="btn btn-primary"
                               onClick={() => {

@@ -5,11 +5,11 @@ import React, { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const initialState = [
-  { id: 45454, proyecto: "Keyboard Dell", valor: 20 },
-  { id: 45458, proyecto: "Mouse Dell", valor: 10 },
-  { id: 45459, proyecto: "Samsung Monitor", valor: 300 },
-  { id: 45453, proyecto: "MacBook Pro", valor: 860 },
-  { id: 45457, proyecto: "Motorola S10", valor: 660 },
+  { id: 45454, proyecto: "Keyboard Dell", valor: 20, quantity: 101 },
+  { id: 45458, proyecto: "Mouse Dell", valor: 10, quantity: 101 },
+  { id: 45459, proyecto: "Samsung Monitor", valor: 300, quantity: 101 },
+  { id: 45453, proyecto: "MacBook Pro", valor: 860, quantity: 101 },
+  { id: 45457, proyecto: "Motorola S10", valor: 660, quantity: 101 },
 ];
 
 //Paso 3:crear el componente Provider con {children}
@@ -18,18 +18,18 @@ export const CartProvider = ({ children }) => {
   const [cartList, setCartlist] = useState(initialState);
 
   //Paso 4: crear las funciones que necesito
-  function saludar() {
-    alert("Bonjour");
+  function saludar(mensaje) {
+    mensaje ? alert(mensaje) : alert("Bonjour");
   }
 
   //Para agregar productos, recibo el objeto
-  function agregarhogar(objetoHogar, cantidadComprada) {
+  function agregarHogar(objetoHogar, cantidadComprada) {
     setCartlist([
       {
         id: objetoHogar.id,
-        name: objetoHogar.proyecto,
-        price: objetoHogar.valor,
-        quantity: cantidadComprada,
+        proyecto: objetoHogar.proyecto,
+        valor: objetoHogar.valor,
+        quantity: cantidadComprada, //en futuro habria que hacer quantity+cantidadComprada
       },
       ...cartList,
     ]);
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ saludar, cartList, agregarhogar }}>
+    <CartContext.Provider value={{ saludar, cartList, agregarHogar }}>
       {children}
     </CartContext.Provider>
   );
