@@ -21,7 +21,6 @@ export default function ItemCount({ inventario, inicial, onAdd }) {
 
   //lo que hace cuando uno al final le da a confirmar la compra
   function onConfirmar() {
-    alert(cantidadCompras);
     onAdd(cantidadCompras);
     setCantidadCompras(inicial);
     setCompraConfirmada(true);

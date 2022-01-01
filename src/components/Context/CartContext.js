@@ -24,36 +24,47 @@ export const CartProvider = ({ children }) => {
 
   //Para agregar productos, recibo el objeto
   function agregarHogar(objetoHogar, cantidadComprada) {
-    setCartlist([
-      {
-        id: objetoHogar.id,
-        proyecto: objetoHogar.proyecto,
-        valor: objetoHogar.valor,
-        quantity: cantidadComprada, //en futuro habria que hacer quantity+cantidadComprada
-      },
-      ...cartList,
-    ]);
-    // console.log(cartList);
+    cantidadComprada > 0
+      ? setCartlist([
+          {
+            id: objetoHogar.id,
+            proyecto: objetoHogar.proyecto,
+            valor: objetoHogar.valor,
+            quantity: cantidadComprada, //en futuro habria que hacer quantity+cantidadComprada
+          },
+          ...cartList,
+        ])
+      : alert("Debes agregar mínimo 1 hogar");
   }
 
-  //revisa si lo que estoy agregando al carrito ya estaba
-  function estaDuplicado(titulo) {
-    const itemsEncontrados = cartList.find(
-      (hogar) => hogar.proyecto === titulo
-    );
+  //revisa si el hogar que estoy agregando ya estaba en el carrito
+  function estaDuplicado(id) {
+    const itemsEncontrados = cartList.find((hogar) => hogar.id === id);
     return typeof itemsEncontrados != "undefined" ? true : false;
   }
+
+  //esta funcion elimina un hogar especifico del carrito
+  function eliminarHogar(productID) {
+    setCartlist(cartList.filter((item) => item.id !== productID));
+    console.log(`El item ${productID} ha sido borrado`);
+  }
+
   //borra el carrito totalmente
   function borrarCarrito() {
     setCartlist([]);
-    console.log("Carrito borrado");
-    console.log(cartList);
   }
 
   //Value, son los valores que queremos que se usen a lo largo de la app
   return (
     <CartContext.Provider
-      value={{ saludar, cartList, agregarHogar, estaDuplicado, borrarCarrito }}
+      value={{
+        saludar,
+        cartList,
+        agregarHogar,
+        estaDuplicado,
+        eliminarHogar,
+        borrarCarrito,
+      }}
     >
       {children}
     </CartContext.Provider>

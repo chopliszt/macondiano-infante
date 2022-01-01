@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
-import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 
 //DATA es realmente el hogar que viene como prop
 const ItemDetail = ({ data }) => {
-  // const [hogar, setHogar] = useState();
-  const { saludar, agregarHogar } = useContext(CartContext);
+  const { agregarHogar, estaDuplicado } = useContext(CartContext);
 
   function onAdd(cantidadDeHogares) {
-    console.log("hola desde onAdd");
-    agregarHogar(data, cantidadDeHogares);
+    estaDuplicado(data.id) === false
+      ? agregarHogar(data, cantidadDeHogares)
+      : alert("Está repetido!");
   }
 
   return (
@@ -42,48 +41,7 @@ const ItemDetail = ({ data }) => {
             </strong>
           </p>
           <h4>Cantidad a comprar</h4>
-          {/* <h4>Cantidad comprada temporal {cantidadCompras}</h4> */}
-          <ItemCount
-            inventario={5}
-            inicial={0}
-            saludar={saludar}
-            onAdd={onAdd}
-          />
-          <Link to="/cart">
-            <button
-              className="btn btn-warning me-2"
-              onClick={() => {
-                //faltaria implementar que lo que compre sea mayor a 0
-                // estaDuplicada(product.title) == false
-                //   ? agregarProducto(product, cantidadCompras)
-                //   : alert("Está repetido!");
-              }}
-            >
-              Compraaar Ir al Carrito! Esta logica aun debo usarla
-            </button>
-          </Link>
-          {/* <button
-            className="btn btn-success me-1"
-            onClick={() => {
-              // borrarCarrito();
-              alert("borrando todo el carrito!");
-            }}
-          >
-            Borrar todo
-          </button> */}
-          {/* <button
-            className="btn btn-success me-1"
-            onClick={() => {
-              alert("eliminando item" + data.id);
-              // eliminarItem(product.id);
-            }}
-          >
-            Borrar este producto
-          </button> */}
-
-          {/* <Link to="/">
-            <button class="btn btn-info">Regresar</button>
-          </Link> */}
+          <ItemCount inventario={5} inicial={0} onAdd={onAdd} />
         </div>
       </div>
     </>
