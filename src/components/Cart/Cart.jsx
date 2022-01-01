@@ -3,7 +3,7 @@ import { CartContext } from "../Context/CartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartList } = useContext(CartContext);
+  const { cartList, borrarCarrito } = useContext(CartContext);
   return (
     <div>
       <p>El carrito2</p>
@@ -68,11 +68,11 @@ const Cart = () => {
             <button
               className="btn btn-info me-1"
               onClick={() => {
-                // borrarCarrito();
+                borrarCarrito();
                 //alertar();
               }}
             >
-              Borrar carritoo
+              Borrar todo carritoo
             </button>
             <Link to="/">
               <button className="btn btn-primary me-1">regresar</button>

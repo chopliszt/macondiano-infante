@@ -13,7 +13,7 @@ const initialState = [
 ];
 
 //Paso 3:crear el componente Provider con {children}
-//Value, son los valores que queremos que se usen a lo largo de la app
+
 export const CartProvider = ({ children }) => {
   const [cartList, setCartlist] = useState(initialState);
 
@@ -33,11 +33,28 @@ export const CartProvider = ({ children }) => {
       },
       ...cartList,
     ]);
+    // console.log(cartList);
+  }
+
+  //revisa si lo que estoy agregando al carrito ya estaba
+  function estaDuplicado(titulo) {
+    const itemsEncontrados = cartList.find(
+      (hogar) => hogar.proyecto === titulo
+    );
+    return typeof itemsEncontrados != "undefined" ? true : false;
+  }
+  //borra el carrito totalmente
+  function borrarCarrito() {
+    setCartlist([]);
+    console.log("Carrito borrado");
     console.log(cartList);
   }
 
+  //Value, son los valores que queremos que se usen a lo largo de la app
   return (
-    <CartContext.Provider value={{ saludar, cartList, agregarHogar }}>
+    <CartContext.Provider
+      value={{ saludar, cartList, agregarHogar, estaDuplicado, borrarCarrito }}
+    >
       {children}
     </CartContext.Provider>
   );
