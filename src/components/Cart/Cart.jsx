@@ -3,11 +3,10 @@ import { CartContext } from "../Context/CartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartList, eliminarHogar, borrarCarrito } = useContext(CartContext);
+  const { cartList, eliminarHogar, borrarCarrito, calcularTotal } =
+    useContext(CartContext);
   return (
     <div>
-      <p>El carrito2</p>
-      {console.log(cartList)}
       <div className="row mt-3 ms-1">
         <div className="row">
           <div className="col">
@@ -62,7 +61,7 @@ const Cart = () => {
         <div className="row">
           <div className="col">
             <p>
-              <strong>TOTAL:</strong>
+              <strong>TOTAL: {calcularTotal()}</strong>
             </p>
             <button className="btn btn-primary me-1">comprar</button>
             <button

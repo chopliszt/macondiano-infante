@@ -54,6 +54,15 @@ export const CartProvider = ({ children }) => {
     setCartlist([]);
   }
 
+  //suma el total del valor de las compras
+  function calcularTotal() {
+    let total = 0;
+    cartList.map((hogar) => {
+      total += hogar.valor;
+    });
+    return total;
+  }
+
   //Value, son los valores que queremos que se usen a lo largo de la app
   return (
     <CartContext.Provider
@@ -64,6 +73,7 @@ export const CartProvider = ({ children }) => {
         estaDuplicado,
         eliminarHogar,
         borrarCarrito,
+        calcularTotal,
       }}
     >
       {children}

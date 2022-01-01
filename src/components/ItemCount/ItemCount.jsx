@@ -50,10 +50,12 @@ export default function ItemCount({ inventario, inicial, onAdd }) {
           ) : (
             <>
               <Link to={"/"}>
-                <button className="btn btn-info mt-2">seguir comprando</button>
+                <button className="btn btn-info mt-2 me-2">
+                  seguir comprando
+                </button>
               </Link>
               <Link to={"/cart"}>
-                <button className="btn btn-info mt-2">Ir a Carrito</button>
+                <button className="btn btn-info mt-2 me-2">Ir a Carrito</button>
               </Link>
             </>
           )}
