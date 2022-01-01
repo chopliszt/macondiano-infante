@@ -6,6 +6,7 @@ import Home from "./views/Home";
 import Category from "./views/Category";
 import ItemDetailContainer from "../src/components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "../src/components/Cart/Cart";
+import NavBar from "./components/NavBar/NavBar";
 //para el Context
 import { CartProvider } from "../src/components/Context/CartContext";
 
@@ -14,6 +15,10 @@ function App() {
     <CartProvider>
       <Router>
         <div className="App container">
+          <NavBar
+            colorDeNavBar="#e3f2fd"
+            navBrandLeft="Compra tu Hogar/Maloka 🛖"
+          />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/category/:category" element={<Category />} />

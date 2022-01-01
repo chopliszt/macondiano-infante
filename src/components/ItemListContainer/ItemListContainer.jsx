@@ -9,7 +9,7 @@ function ItemListContainer({ categoriaProp }) {
 
   useEffect(() => {
     getAptos();
-  }, []);
+  }, [categoriaProp]);
 
   const getAptos = async () => {
     console.log("Trayendo los datos");
