@@ -9,7 +9,7 @@ function ItemListContainer({ categoriaProp }) {
 
   useEffect(() => {
     getAptos();
-  }, [categoriaProp]);
+  }, [categoriaProp]); //para que se actualice cada vez que la categoria cambie
 
   const getAptos = async () => {
     console.log("Trayendo los datos");
