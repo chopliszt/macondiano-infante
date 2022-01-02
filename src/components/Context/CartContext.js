@@ -58,7 +58,8 @@ export const CartProvider = ({ children }) => {
   function calcularTotal() {
     let total = 0;
     cartList.map((hogar) => {
-      total += hogar.valor;
+      // total += hogar.valor;
+      total = total + hogar.valor * hogar.quantity;
     });
     return total;
   }

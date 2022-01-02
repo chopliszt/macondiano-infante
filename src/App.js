@@ -14,7 +14,7 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        <div className="App container">
+        <div className="container App">
           <NavBar
             colorDeNavBar="#e3f2fd"
             navBrandLeft="Compra tu Hogar/Maloka 🛖"
