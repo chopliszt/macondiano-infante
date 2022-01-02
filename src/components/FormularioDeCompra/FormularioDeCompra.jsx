@@ -4,15 +4,29 @@ import { db } from "../../services/FirebaseConfig";
 import Swal from "sweetalert2";
 
 const FormularioDeCompra = ({ resetear }) => {
+  //necesita siempre inicializarse o da error
+  const [camposFormulario, setCamposFormulario] = useState({
+    nombre: "Stigwar",
+    correo: "stig@codabas.com",
+    tel: "4525",
+  });
+
   const [IDDeCompra, setIDDeCompra] = useState();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setCamposFormulario({
+      ...camposFormulario,
+      [name]: value,
+    });
+  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     // Add a new document with a generated id.
     const docRef = await addDoc(collection(db, "ordenes"), {
-      nombre: "Juan3",
-      correo: "parrot@parrot.com",
-      telefono: 3777777,
+      camposFormulario,
     });
     setIDDeCompra(docRef.id);
     Swal.fire("Orden creada con el ID: ", docRef.id);
@@ -36,6 +50,9 @@ const FormularioDeCompra = ({ resetear }) => {
                   className="form-control"
                   type="text"
                   id="nombre"
+                  name="nombre"
+                  onChange={handleChange}
+                  value={camposFormulario.value}
                   placeholder="John"
                 />
               </div>
@@ -48,6 +65,9 @@ const FormularioDeCompra = ({ resetear }) => {
                   className="form-control"
                   type="text"
                   id="correo"
+                  name="correo"
+                  onChange={handleChange}
+                  //   value={camposFormulario.correo}
                   placeholder="John@now.com"
                   aria-describedby="ayuda-correo"
                 />
@@ -64,6 +84,9 @@ const FormularioDeCompra = ({ resetear }) => {
                   className="form-control"
                   type="text"
                   id="tel"
+                  name="tel"
+                  onChange={handleChange}
+                  //   value={camposFormulario.tel}
                   placeholder="3002627"
                 />
               </div>
