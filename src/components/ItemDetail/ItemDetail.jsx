@@ -17,7 +17,7 @@ const ItemDetail = ({ data }) => {
       <div className="row mt-3">
         <col-12>
           <h2>
-            {data ? data.proyecto : "Título de artículo"}
+            {data ? `${data.proyecto}-${data.etapa}` : "Título de artículo"}
             <span className="badge bg-primary">
               {data ? data.category : null}
             </span>
@@ -41,7 +41,7 @@ const ItemDetail = ({ data }) => {
             </strong>
           </p>
           <h4>Cantidad a comprar</h4>
-          <ItemCount inventario={5} inicial={0} onAdd={onAdd} />
+          <ItemCount inventario={data.stock} inicial={0} onAdd={onAdd} />
         </div>
       </div>
     </>

@@ -5,8 +5,6 @@ Este proyecto fue creado con [Create React App](https://github.com/facebook/crea
 
 ## Screenshots del proyecto
 
-macondiano.gif
-![Alt text](./public/ecommerceJCScreenshot.png?raw=true "Title")
 ![plot](./public/ecommerceJCScreenshot.png)
 
 ## Instrucciones de instalación y configuración

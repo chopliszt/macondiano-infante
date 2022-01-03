@@ -11,6 +11,7 @@ const ItemList = ({ hogares }) => {
               key={hogar.id}
               id={hogar.id}
               proyecto={hogar.proyecto}
+              etapa={hogar.etapa}
               img={hogar.img}
               valor={hogar.valor}
             />

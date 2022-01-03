@@ -24,12 +24,10 @@ const Cart = () => {
             <div className="col">
               <div className="table-responsive">
                 <table className="table mt-3">
-                  <caption>
-                    Tabla de excelentes compras que has hecho, eres brillante
-                  </caption>
+                  <caption>Tabla de lo que será tu nuevo hogar</caption>
                   <thead className="table-light">
-                    <th>Producto</th>
-                    <th>Precio</th>
+                    <th>Proyecto-Etapa</th>
+                    <th>Valor</th>
                     <th>Cantidad</th>
                     <th>Acciones</th>
                   </thead>
@@ -44,7 +42,9 @@ const Cart = () => {
                               index % 2 === 0 ? "table-primary" : "table"
                             }
                           >
-                            <td>{apartamento.proyecto}</td>
+                            <td>
+                              {`${apartamento.proyecto}-${apartamento.etapa}`}{" "}
+                            </td>
                             <td>{apartamento.valor}</td>
                             <td>{apartamento.quantity}</td>
                             <td>

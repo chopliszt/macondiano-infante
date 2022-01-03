@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-const Item = ({ id, proyecto, img, valor }) => {
+const Item = ({ id, proyecto, img, valor, etapa }) => {
   return (
     <div className="row mb-4">
       <div className="col">
@@ -19,7 +19,7 @@ const Item = ({ id, proyecto, img, valor }) => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {proyecto}
+              {`${proyecto}-${etapa}`}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               El valor del apartamento es: {valor}

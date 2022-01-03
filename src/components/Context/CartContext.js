@@ -5,11 +5,20 @@ import React, { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const initialState = [
-  { id: 45454, proyecto: "Keyboard Dell", valor: 20, quantity: 101 },
-  { id: 45458, proyecto: "Mouse Dell", valor: 10, quantity: 101 },
-  { id: 45459, proyecto: "Samsung Monitor", valor: 300, quantity: 101 },
-  { id: 45453, proyecto: "MacBook Pro", valor: 860, quantity: 101 },
-  { id: 45457, proyecto: "Motorola S10", valor: 660, quantity: 101 },
+  {
+    id: 45454,
+    proyecto: "Santana Dos",
+    valor: 195000000,
+    quantity: 1,
+    etapa: "Chapi",
+  },
+  {
+    id: 45458,
+    proyecto: "C Montes",
+    valor: 600000000,
+    quantity: 1,
+    etapa: "Remanso",
+  },
 ];
 
 //Paso 3:crear el componente Provider con {children}
@@ -29,6 +38,7 @@ export const CartProvider = ({ children }) => {
           {
             id: objetoHogar.id,
             proyecto: objetoHogar.proyecto,
+            etapa: objetoHogar.etapa,
             valor: objetoHogar.valor,
             quantity: cantidadComprada, //en futuro habria que hacer quantity+cantidadComprada
           },
