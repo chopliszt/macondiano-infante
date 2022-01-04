@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 const Item = ({ id, proyecto, img, valor, etapa }) => {
   return (
-    <div className="row mb-4">
+    <div className="row mt-3 mb-4 me-3 d-inline-flex ">
       <div className="col">
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
