@@ -27,11 +27,12 @@ export default function ItemCount({ inventario, inicial, onAdd }) {
   }
 
   return (
-    <div className="container">
+    <div className="bg-light pt-4 pb-1">
       <div>
         {hayAlertaDeInventario && <Alerta mensaje="No hay suficiente Stock" />}
       </div>
       <div className="row mb-5 justify-content-center">
+        <h5>Cantidad a comprar</h5>
         <div className="col ">
           <p>({inventario} hogares disponibles)</p>
           <button className="btn btn-primary me-2" onClick={eliminar}>

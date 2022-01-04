@@ -10,7 +10,8 @@ const Item = ({ id, proyecto, img, valor, etapa }) => {
   return (
     <div className="row mt-3 mb-4 me-3 d-inline-flex ">
       <div className="col">
-        <Card sx={{ maxWidth: 345 }}>
+        {/* tambien podria darle algo como , maxHeight: 300 */}
+        <Card sx={{ maxWidth: 300 }}>
           <CardMedia
             component="img"
             alt="green iguana"

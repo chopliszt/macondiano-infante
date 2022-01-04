@@ -36,11 +36,10 @@ const ItemDetail = ({ data }) => {
           </p>
           <p>
             <strong>
-              Precio: US${data ? data.valor : "precio"}
+              Precio: COP ${data ? data.valor : "precio"}
               <span className="badge bg-warning">Entrega Inmediata</span>
             </strong>
           </p>
-          <h4>Cantidad a comprar</h4>
           <ItemCount inventario={data.stock} inicial={0} onAdd={onAdd} />
         </div>
       </div>
