@@ -19,6 +19,7 @@ function App() {
             colorDeNavBar="#e3f2fd"
             navBrandLeft="Compra tu Hogar/Maloka 🛖"
           />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/category/:category" element={<Category />} />

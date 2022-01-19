@@ -38,9 +38,7 @@ const Cart = () => {
                         <>
                           <tr
                             key={apartamento.id}
-                            className={
-                              index % 2 === 0 ? "table-primary" : "table"
-                            }
+                            className={index % 2 === 0 && "table-primary"}
                           >
                             <td>
                               {`${apartamento.proyecto}-${apartamento.etapa}`}{" "}
